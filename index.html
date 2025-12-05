@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cutie Cat Rescue</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Use Lato font for a cleaner, professional look -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Define the custom mauve/pale pink color */
+        :root {
+            --color-pink-primary: #F0D9E7; /* Pale Mauve Pink */
+            --color-pink-dark: #DDAAEE;    /* Slightly deeper tone */
+            --color-pink-accent: #E87A9E;  /* Accent pink for buttons/links */
+            --header-height: 5rem; /* 80px */
+        }
+        .bg-primary { background-color: var(--color-pink-primary); }
+        .text-primary { color: var(--color-pink-primary); }
+        .bg-accent { background-color: var(--color-pink-accent); }
+        .text-accent { color: var(--color-pink-accent); }
+
+        /* Custom utility for button hover effect */
+        .btn-hover {
+            transition: all 0.2s ease-in-out;
+        }
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: var(--color-pink-dark);
+        }
+
+        /* Base styles - Using Lato for a professional, clean feel */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+        /* Custom scrollbar for aesthetics */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #E87A9E; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #DDAAEE; }
+        
+        /* Adjust section padding to account for fixed header (80px + margin) and reduce overall whitespace */
+        .page-section {
+            padding-top: calc(var(--header-height) + 1.5rem); 
+            margin-top: -1.5rem; /* Pull up to align properly */
+            padding-bottom: 3rem; /* Reduced from 4rem */
+        }
+        /* Ensure the main content doesn't get clipped by the negative margin on the feature cards */
+        .home-section-padding {
+            padding-top: 1rem;
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Fixed Header/Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 shadow-lg bg-white/95 backdrop-blur-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="heart" class="w-6 h-6 text-accent"></i>
+                <a href="#home" class="text-3xl font-extrabold text-accent">
+                    The Cutie Cat Rescue
+                </a>
+            </div>
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-700 hover:text-accent font-medium transition duration-150 ease-in-out">Home</a>
+                <a href="#adopt" class="nav-link text-gray-700 hover:text-accent font-medium transition duration-150 ease-in-out">Adopt/Foster</a>
+                <a href="#donate" class="nav-link text-gray-700 hover:text-accent font-medium transition duration-150 ease-in-out">Donate</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-accent font-medium transition duration-150 ease-in-out">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-700 hover:text-accent focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-white shadow-xl py-2 transition-all duration-300 ease-in-out">
+            <a href="#home" class="nav-link block px-4 py-2 text-gray-700 hover:bg-primary transition duration-150 ease-in-out">Home</a>
+            <a href="#adopt" class="nav-link block px-4 py-2 text-gray-700 hover:bg-primary transition duration-150 ease-in-out">Adopt/Foster</a>
+            <a href="#donate" class="nav-link block px-4 py-2 text-gray-700 hover:bg-primary transition duration-150 ease-in-out">Donate</a>
+            <a href="#contact" class="nav-link block px-4 py-2 text-gray-700 hover:bg-primary transition duration-150 ease-in-out">Contact</a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- 1. Home Section (Hero & Feature Cards) -->
+        <section id="home" class="page-section">
+            
+            <!-- Professional Hero Image Header - Split Layout (Text Left, Image Right) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 h-[50vh] md:h-[60vh] overflow-hidden mb-0 
+                        -mx-4 sm:-mx-6 lg:-mx-8 rounded-none shadow-xl">
+                
+                <!-- Left Column: Text Content -->
+                <!-- Note: Background color is dark to make the text pop against the pink accent -->
+                <div class="bg-gray-800 flex flex-col justify-center p-8 md:p-12 text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-white drop-shadow-xl tracking-tight">
+                        Finding <span class="text-accent">Forever Homes</span> for Cutie Cats
+                    </h1>
+                    <p class="mt-4 text-lg md:text-xl text-primary font-light max-w-lg mx-auto md:mx-0">
+                        Dedicated to rescuing, rehabilitating, and rehoming every precious feline in need.
+                    </p>
+                    <a href="#adopt" class="mt-6 md:mt-8 inline-block mx-auto md:mx-0 px-8 py-3 bg-accent text-white font-bold rounded-full text-lg btn-hover shadow-lg">
+                        Meet Our Adoptables
+                    </a>
+                </div>
+                
+                <!-- Right Column: Cat Image (Hidden on small screens) -->
+                <div class="hidden md:block relative">
+                    <img src="https://images.unsplash.com/photo-1543852786-1cf66249e795?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        onerror="this.onerror=null;this.src='https://placehold.co/1200x600/F0D9E7/E87A9E?text=The+Cutie+Cat+Rescue';"
+                        alt="Happy cat being adopted - Hero Image"
+                        class="w-full h-full object-cover object-center">
+                </div>
+
+            </div>
+
+            <!-- Feature Cards (2x2 Grid: Mission, Vision, Volunteer, Medical) - UPDATED TO 2x2 LAYOUT -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
+                
+                <!-- Card 1: Mission (Text Content) -->
+                <div class="bg-white p-8 rounded-xl shadow-lg transition duration-300 hover:shadow-2xl hover:scale-[1.02] border-t-4 border-accent">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="paw-print" class="w-8 h-8 text-accent mr-3"></i>
+                        <h2 class="text-3xl font-bold text-gray-800">Our Mission</h2>
+                    </div>
+                    <p class="text-gray-700">
+                        The Cutie Cat Rescue is dedicated to rescuing, rehabilitating, and rehoming abandoned, neglected, and stray cats in our community. We provide medical care, nourishment, and, most importantly, endless love, ensuring they are ready for their perfect forever families.
+                    </p>
+                    <a href="#adopt" class="mt-4 inline-block px-4 py-2 text-sm bg-accent text-white font-medium rounded-lg btn-hover shadow-md">
+                        Read More
+                    </a>
+                </div>
+
+                <!-- Card 2: Vision (Text Content) -->
+                <div class="bg-white p-8 rounded-xl shadow-lg transition duration-300 hover:shadow-2xl hover:scale-[1.02] border-t-4 border-accent">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="eye" class="w-8 h-8 text-accent mr-3"></i>
+                        <h2 class="text-3xl font-bold text-gray-800">Our Vision</h2>
+                    </div>
+                    <p class="text-gray-700">
+                        We envision a future where every cat is valued, protected, and free from suffering. Through community education, robust foster programs, and proactive rescue efforts, we strive for a no-kill community where every feline has a safe place to call home.
+                    </p>
+                    <a href="#contact" class="mt-4 inline-block px-4 py-2 text-sm bg-accent text-white font-medium rounded-lg btn-hover shadow-md">
+                        Join Our Vision
+                    </a>
+                </div>
+
+                <!-- Card 3: Volunteer / Foster (Link Style Card) -->
+                <a href="#adopt" class="group bg-primary p-8 rounded-xl shadow-lg transition duration-300 hover:shadow-2xl hover:scale-[1.02] flex flex-col justify-between">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 mb-4 rounded-full overflow-hidden border-4 border-accent shadow-lg flex items-center justify-center bg-white">
+                             <i data-lucide="users" class="w-8 h-8 text-accent"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-800 ml-4">Become a Volunteer or Foster!</h2>
+                    </div>
+                    <p class="text-gray-700 mt-2">
+                        We need dedicated, loving humans to help socialize and care for our cats. Open your home and heart to a temporary friend.
+                    </p>
+                    <div class="mt-4 flex justify-end">
+                        <span class="px-4 py-2 text-sm bg-accent text-white font-medium rounded-lg btn-hover shadow-md">
+                            Apply Now
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Card 4: Medical Care / Donate (Link Style Card) -->
+                <a href="#donate" class="group bg-primary p-8 rounded-xl shadow-lg transition duration-300 hover:shadow-2xl hover:scale-[1.02] flex flex-col justify-between">
+                    <div class="flex items-center mb-4">
+                         <div class="w-16 h-16 mb-4 rounded-full overflow-hidden border-4 border-accent shadow-lg flex items-center justify-center bg-white">
+                             <i data-lucide="stethoscope" class="w-8 h-8 text-accent"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-800 ml-4">Sponsor Medical Care</h2>
+                    </div>
+                    <p class="text-gray-700 mt-2">
+                        Many of our rescues require urgent, life-saving medical attention. Your donation directly funds vet visits, surgery, and medication.
+                    </p>
+                    <div class="mt-4 flex justify-end">
+                        <span class="px-4 py-2 text-sm bg-accent text-white font-medium rounded-lg btn-hover shadow-md">
+                            Sponsor a Cat
+                        </span>
+                    </div>
+                </a>
+            </div>
+           
+        </section>
+
+        <!-- 2. Adopt/Foster Section -->
+        <section id="adopt" class="page-section">
+            
+            <!-- LARGE RECTANGULAR PICTURE BREAK: Adoption Focus - Updated for Full Width and Sharp Edges -->
+            <div class="relative h-64 md:h-80 w-full overflow-hidden mb-8 
+                        -mx-4 sm:-mx-6 lg:-mx-8 rounded-none shadow-none">
+                <img src="https://placehold.co/1200x400/DDAAEE/ffffff?text=Find+Your+New+Best+Friend"
+                     onerror="this.onerror=null;this.src='https://placehold.co/1200x400/DDAAEE/ffffff?text=Find+Your+New+Best+Friend';"
+                     alt="Picture break for Adoption section"
+                     class="absolute inset-0 w-full h-full object-cover object-center">
+            </div>
+
+            <h1 class="text-4xl font-extrabold text-gray-800 border-b-4 border-accent/50 pb-2 mb-8">Adopt or Foster a Cutie Cat!</h1>
+
+            <!-- Adoption Process & Application Section (Updated with 4 consolidated steps) -->
+            <div class="bg-primary/50 p-8 rounded-2xl shadow-inner mb-10">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Our Simple Adoption Process</h2>
+                <div class="grid md:grid-cols-4 gap-6 text-center">
+                    <div class="p-4 bg-white rounded-lg shadow-md">
+                        <i data-lucide="file-text" class="w-8 h-8 text-accent mx-auto mb-2"></i>
+                        <p class="font-semibold">1. Submit Application</p>
+                        <p class="text-sm text-gray-600">Complete the quick online form.</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-lg shadow-md">
+                        <i data-lucide="check-circle" class="w-8 h-8 text-accent mx-auto mb-2"></i>
+                        <p class="font-semibold">2. Screening & Approval</p>
+                        <p class="text-sm text-gray-600">Includes reference checks and a home assessment.</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-lg shadow-md">
+                        <i data-lucide="heart" class="w-8 h-8 text-accent mx-auto mb-2"></i>
+                        <p class="font-semibold">3. Meet Your Match</p>
+                        <p class="text-sm text-gray-600">Spend time with your chosen cat.</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-lg shadow-md">
+                        <i data-lucide="home" class="w-8 h-8 text-accent mx-auto mb-2"></i>
+                        <p class="font-semibold">4. Finalize & Welcome</p>
+                        <p class="text-sm text-gray-600">Pay fee, sign the contract, and take your cat home!</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-accent/50">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Ready to Apply?</h3>
+                    <p class="text-gray-700 mb-4">
+                        Please click the button below to fill out our secure, comprehensive adoption/foster application form. This helps us ensure the best match for both you and the cat!
+                    </p>
+                    <a href="#" class="inline-flex items-center px-6 py-3 bg-accent text-white font-bold rounded-full btn-hover shadow-md">
+                        Start Adoption Application
+                        <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-extrabold text-gray-800 mb-6 mt-10">Meet Our Adoptable Cats</h2>
+
+            <!-- Adoptable Cats Grid (Updated with cleaner placeholders) -->
+            <div id="cat-listings" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Cat Card 1: Whiskers -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+                    <div class="h-48 bg-primary flex items-center justify-center">
+                         <!-- Placeholder Image URL for Whiskers -->
+                        <img src="https://placehold.co/400x300/E87A9E/ffffff?text=Whiskers"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x300/E87A9E/ffffff?text=Whiskers';"
+                            alt="Whiskers the Cat" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-accent mb-2">Whiskers</h3>
+                        <p class="text-sm font-semibold text-gray-600 mb-3">5 Months Old | Male | Playful Kitten</p>
+                        <p class="text-gray-700 line-clamp-3">
+                            A charming little tabby with endless energy! Whiskers loves chasing string, batting at toys, and cuddling up for a post-zoom nap. He's great with kids and other friendly pets.
+                        </p>
+                        <!-- IMPORTANT: This link will need to be updated to whiskers.html -->
+                        <a href="whiskers.html" class="mt-4 block text-center py-2 bg-accent/10 text-accent font-semibold rounded-lg border-2 border-accent/0 hover:border-accent transition duration-150">
+                            View Full Profile
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cat Card 2: Princess Purrsalot -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+                    <div class="h-48 bg-primary flex items-center justify-center">
+                        <!-- Placeholder Image URL for Princess Purrsalot -->
+                        <img src="https://placehold.co/400x300/DDAAEE/ffffff?text=Princess+P"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x300/DDAAEE/ffffff?text=Princess+P';"
+                            alt="Princess Purrsalot the Cat" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-accent mb-2">Princess Purrsalot</h3>
+                        <p class="text-sm font-semibold text-gray-600 mb-3">4 Years Old | Female | Chill & Regal</p>
+                        <p class="text-gray-700 line-clamp-3">
+                            A stunning long-haired beauty who demands attention with her loud purr. She enjoys sunny windowsills and quiet evenings. Best suited for a home without small children.
+                        </p>
+                        <!-- IMPORTANT: This link will need to be updated to princess-purrsalot.html -->
+                        <a href="#" class="mt-4 block text-center py-2 bg-accent/10 text-accent font-semibold rounded-lg border-2 border-accent/0 hover:border-accent transition duration-150">
+                            View Full Profile
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cat Card 3: Shadow -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+                    <div class="h-48 bg-primary flex items-center justify-center">
+                        <!-- Placeholder Image URL for Shadow -->
+                        <img src="https://placehold.co/400x300/F0D9E7/E87A9E?text=Shadow"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x300/F0D9E7/E87A9E?text=Shadow';"
+                            alt="Shadow the Cat" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-accent mb-2">Shadow</h3>
+                        <p class="text-sm font-semibold text-gray-600 mb-3">1 Year Old | Male | Shy but Sweet</p>
+                        <p class="text-gray-700 line-clamp-3">
+                            A sleek black cat who takes a moment to warm up, but is incredibly affectionate once he trusts you. Needs a patient family who can provide a quiet, secure environment.
+                        </p>
+                        <!-- IMPORTANT: This link will need to be updated to shadow.html -->
+                        <a href="#" class="mt-4 block text-center py-2 bg-accent/10 text-accent font-semibold rounded-lg border-2 border-accent/0 hover:border-accent transition duration-150">
+                            View Full Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Donate Section -->
+        <section id="donate" class="page-section">
+            <!-- Removed Donate Picture Block per user request -->
+
+            <h1 class="text-4xl font-extrabold text-gray-800 border-b-4 border-accent/50 pb-2 mb-8">Support Our Cutie Cats</h1>
+
+            <div class="bg-primary/50 p-10 rounded-2xl shadow-xl text-center">
+                <i data-lucide="hand-heart" class="w-12 h-12 text-accent mx-auto mb-4"></i>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Your Gift Makes a Difference</h2>
+                <p class="text-lg text-gray-700 max-w-4xl mx-auto mb-8">
+                    As a non-profit, volunteer-run organization, The Cutie Cat Rescue relies 100% on the kindness and generosity of supporters like you. Every dollar goes directly to medical care, food, litter, and supplies for cats in need.
+                </p>
+
+                <!-- NEW Mobile Payment Options -->
+                <div class="mb-10 p-6 bg-white rounded-xl shadow-inner border border-gray-200">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Quick Mobile Giving</h3>
+                    <p class="text-gray-600 mb-4">For fast, easy donations, use one of our mobile payment options below:</p>
+                    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-8">
+                        <!-- Venmo -->
+                        <div class="flex items-center justify-center space-x-2">
+                            <i data-lucide="wallet" class="w-6 h-6 text-blue-500"></i>
+                            <p class="font-semibold text-gray-700">Venmo:</p>
+                            <a href="https://venmo.com/u/YOUR-VENMO-HANDLE" target="_blank" class="text-blue-500 font-bold hover:underline">@CutieCatRescue</a>
+                            <p class="text-xs text-gray-500">(Tap to Donate)</p>
+                        </div>
+                        <!-- Zelle -->
+                        <div class="flex items-center justify-center space-x-2">
+                            <i data-lucide="banknote" class="w-6 h-6 text-purple-600"></i>
+                            <p class="font-semibold text-gray-700">Zelle:</p>
+                            <span class="text-purple-600 font-bold">donate@cutiecatrescue.org</span>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-sm text-gray-500">Please replace the placeholder information above with your actual Venmo handle and Zelle email.</p>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Or Choose a Tier</h3>
+
+                <!-- Donation Tiers (Kept for structure) -->
+                <div class="grid md:grid-cols-3 gap-6 mb-10">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-transparent hover:border-accent transition duration-200">
+                        <p class="text-xl font-bold text-accent">$25 - A Week of Food</p>
+                        <p class="text-gray-600 mt-1">Feeds one rescue cat for seven days.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-transparent hover:border-accent transition duration-200">
+                        <p class="text-xl font-bold text-accent">$75 - Vaccination Package</p>
+                        <p class="text-gray-600 mt-1">Covers essential initial vaccines for a kitten.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-transparent hover:border-accent transition duration-200">
+                        <p class="text-xl font-bold text-accent">$150 - Spay/Neuter Surgery</p>
+                        <p class="text-gray-600 mt-1">Helps control the pet population and keeps a cat healthy.</p>
+                    </div>
+                </div>
+
+                <a href="#" class="inline-flex items-center px-8 py-4 bg-accent text-white font-bold text-xl rounded-full btn-hover shadow-lg shadow-accent/50">
+                    <i data-lucide="dollar-sign" class="w-6 h-6 mr-3"></i>
+                    Make a One-Time Donation
+                </a>
+
+                <p class="mt-6 text-sm text-gray-600">We also accept pet supply donations (food, litter, toys). Please see our contact page for drop-off locations.</p>
+            </div>
+        </section>
+
+        <!-- 4. Contact Section -->
+        <section id="contact" class="page-section">
+            <h1 class="text-4xl font-extrabold text-gray-800 border-b-4 border-accent/50 pb-2 mb-8">Get In Touch</h1>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Information -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center"><i data-lucide="mail" class="w-7 h-7 mr-3 text-accent"></i> Reach Out</h2>
+
+                    <div class="space-y-6">
+                        <div>
+                            <p class="font-semibold text-gray-700">General Inquiries & Adoption Questions:</p>
+                            <a href="mailto:info@cutiecatrescue.org" class="text-accent hover:underline">info@cutiecatrescue.org</a>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-700">Volunteer & Foster Applications:</p>
+                            <a href="mailto:volunteer@cutiecatrescue.org" class="text-accent hover:underline">volunteer@cutiecatrescue.org</a>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-700">Phone (Non-Emergency):</p>
+                            <p class="text-gray-700">(555) CAT-LOVE</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-700">Mailing Address (For Donations):</p>
+                            <p class="text-gray-700">
+                                The Cutie Cat Rescue<br>
+                                123 Purr Lane, Suite 456<br>
+                                Kitty City, CA 90210
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-primary/50 p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center"><i data-lucide="message-circle" class="w-7 h-7 mr-3 text-accent"></i> Send Us a Message</h2>
+                    <form onsubmit="handleFormSubmit(event)">
+                        <div class="mb-4">
+                            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                            <input type="text" id="name" name="name" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-accent focus:border-accent">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="email" name="email" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-accent focus:border-accent">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                            <textarea id="message" name="message" rows="4" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-accent focus:border-accent"></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-4 py-3 bg-accent text-white font-bold rounded-lg btn-hover shadow-md">
+                            Send Message
+                        </button>
+                    </form>
+                    <div id="form-message" class="mt-4 text-center text-sm font-medium hidden"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center space-x-2 mb-4">
+                <i data-lucide="heart" class="w-5 h-5 text-primary"></i>
+                <p class="text-xl font-bold text-primary">The Cutie Cat Rescue</p>
+            </div>
+            <p class="text-sm text-gray-400">&copy; 2024 The Cutie Cat Rescue. All rights reserved. | Non-Profit Organization</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="#" class="text-gray-400 hover:text-accent"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                <a href="#" class="text-gray-400 hover:text-accent"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="text-gray-400 hover:text-accent"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Initialize Lucide Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+
+        // --- Navigation Logic for Smooth Scroll ---
+        
+        // This function handles clicks on navigation links (for both desktop and mobile)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Prevent default anchor link behavior (which is usually instant jump)
+                e.preventDefault();
+
+                // Get the target section ID (e.g., #adopt)
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Calculate the position to scroll to, accounting for the fixed header
+                    const headerHeight = 80; // Fixed header height in px (h-20 is 5rem * 16px = 80px)
+                    const targetPosition = targetElement.offsetTop - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu after clicking a link
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+
+        // --- Mobile Menu Toggle ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // --- Contact Form Submission Simulation ---
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const formMessage = document.getElementById('form-message');
+            formMessage.classList.remove('hidden', 'text-red-600', 'text-green-600');
+            formMessage.classList.add('text-green-600');
+            formMessage.innerHTML = 'Thank you for your message! We will get back to you within 48 hours. (This is a simulation, no email was sent.)';
+            formMessage.classList.remove('hidden');
+
+            // Reset form after a small delay
+            setTimeout(() => {
+                event.target.reset();
+            }, 500);
+        }
+
+    </script>
+</body>
+</html>
