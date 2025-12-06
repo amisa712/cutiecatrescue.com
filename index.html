@@ -58,6 +58,14 @@
             padding-top: 1rem;
         }
 
+        /* Custom styling for the cat profile card footer */
+        .cat-card-footer {
+            /* Adds a subtle break between the description and the stats/button */
+            border-top: 1px solid #f0f0f0; 
+            margin-top: 1rem;
+            padding-top: 1rem;
+        }
+
     </style>
 </head>
 <body class="antialiased">
@@ -117,7 +125,8 @@
                 
                 <!-- Right Column: Cat Image (Hidden on small screens) -->
                 <div class="hidden md:block relative">
-                    <img src="https://images.unsplash.com/photo-1543852786-1cf66249e795?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    <!-- IMAGE LINK UPDATED HERE: Uses relative path from the root directory to your images folder -->
+                    <img src="./images/hero-cat.jpg"
                         onerror="this.onerror=null;this.src='https://placehold.co/1200x600/F0D9E7/E87A9E?text=The+Cutie+Cat+Rescue';"
                         alt="Happy cat being adopted - Hero Image"
                         class="w-full h-full object-cover object-center">
@@ -125,7 +134,7 @@
 
             </div>
 
-            <!-- Feature Cards (2x2 Grid: Mission, Vision, Volunteer, Medical) - UPDATED TO 2x2 LAYOUT -->
+            <!-- Feature Cards (2x2 Grid: Mission, Vision, Volunteer, Medical) -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
                 
                 <!-- Card 1: Mission (Text Content) -->
@@ -198,9 +207,10 @@
         <!-- 2. Adopt/Foster Section -->
         <section id="adopt" class="page-section">
             
-            <!-- LARGE RECTANGULAR PICTURE BREAK: Adoption Focus - Updated for Full Width and Sharp Edges -->
+            <!-- LARGE RECTANGULAR PICTURE BREAK: Adoption Focus - Using Placeholder -->
             <div class="relative h-64 md:h-80 w-full overflow-hidden mb-8 
                         -mx-4 sm:-mx-6 lg:-mx-8 rounded-none shadow-none">
+                <!-- Using a placeholder for the break image, you can replace this too if you like -->
                 <img src="https://placehold.co/1200x400/DDAAEE/ffffff?text=Find+Your+New+Best+Friend"
                      onerror="this.onerror=null;this.src='https://placehold.co/1200x400/DDAAEE/ffffff?text=Find+Your+New+Best+Friend';"
                      alt="Picture break for Adoption section"
@@ -249,23 +259,36 @@
 
             <h2 class="text-3xl font-extrabold text-gray-800 mb-6 mt-10">Meet Our Adoptable Cats</h2>
 
-            <!-- Adoptable Cats Grid (Updated with cleaner placeholders) -->
+            <!-- Adoptable Cats Grid -->
             <div id="cat-listings" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
                 <!-- Cat Card 1: Whiskers -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
                     <div class="h-48 bg-primary flex items-center justify-center">
-                         <!-- Placeholder Image URL for Whiskers -->
-                        <img src="https://placehold.co/400x300/E87A9E/ffffff?text=Whiskers"
+                         <!-- IMAGE LINK UPDATED HERE -->
+                        <img src="./images/whiskers.jpg"
                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/E87A9E/ffffff?text=Whiskers';"
                             alt="Whiskers the Cat" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-accent mb-2">Whiskers</h3>
-                        <p class="text-sm font-semibold text-gray-600 mb-3">5 Months Old | Male | Playful Kitten</p>
-                        <p class="text-gray-700 line-clamp-3">
+                        <!-- Descriptive text is first -->
+                        <p class="text-gray-700 line-clamp-3 mb-4">
                             A charming little tabby with endless energy! Whiskers loves chasing string, batting at toys, and cuddling up for a post-zoom nap. He's great with kids and other friendly pets.
                         </p>
-                        <!-- IMPORTANT: This link will need to be updated to whiskers.html -->
+
+                        <!-- Footer/Stats Section - Name (Left), Age/Gender (Right) -->
+                        <div class="cat-card-footer flex justify-between items-end">
+                            <!-- Left: Name (Larger) -->
+                            <div class="flex flex-col">
+                                <h3 class="text-2xl font-bold text-accent">Whiskers</h3>
+                            </div>
+                            <!-- Right: Age & Gender (Smaller) -->
+                            <p class="text-lg font-semibold text-gray-600 text-right">
+                                5 Months | Young Male
+                            </p>
+                        </div>
+                        
+                        <!-- Remember to update the href to "whiskers.html" when you create that page -->
                         <a href="whiskers.html" class="mt-4 block text-center py-2 bg-accent/10 text-accent font-semibold rounded-lg border-2 border-accent/0 hover:border-accent transition duration-150">
                             View Full Profile
                         </a>
@@ -275,18 +298,30 @@
                 <!-- Cat Card 2: Princess Purrsalot -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
                     <div class="h-48 bg-primary flex items-center justify-center">
-                        <!-- Placeholder Image URL for Princess Purrsalot -->
-                        <img src="https://placehold.co/400x300/DDAAEE/ffffff?text=Princess+P"
+                        <!-- IMAGE LINK UPDATED HERE -->
+                        <img src="./images/princess.jpg"
                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/DDAAEE/ffffff?text=Princess+P';"
                             alt="Princess Purrsalot the Cat" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-accent mb-2">Princess Purrsalot</h3>
-                        <p class="text-sm font-semibold text-gray-600 mb-3">4 Years Old | Female | Chill & Regal</p>
-                        <p class="text-gray-700 line-clamp-3">
+                        <!-- Descriptive text is first -->
+                        <p class="text-gray-700 line-clamp-3 mb-4">
                             A stunning long-haired beauty who demands attention with her loud purr. She enjoys sunny windowsills and quiet evenings. Best suited for a home without small children.
                         </p>
-                        <!-- IMPORTANT: This link will need to be updated to princess-purrsalot.html -->
+
+                        <!-- Footer/Stats Section - Name (Left), Age/Gender (Right) -->
+                        <div class="cat-card-footer flex justify-between items-end">
+                            <!-- Left: Name (Larger) -->
+                            <div class="flex flex-col">
+                                <h3 class="text-2xl font-bold text-accent">Princess P</h3>
+                            </div>
+                            <!-- Right: Age & Gender (Smaller) -->
+                            <p class="text-lg font-semibold text-gray-600 text-right">
+                                4 Years | Adult Female
+                            </p>
+                        </div>
+                        
+                        <!-- Remember to update the href to "princess.html" when you create that page -->
                         <a href="#" class="mt-4 block text-center py-2 bg-accent/10 text-accent font-semibold rounded-lg border-2 border-accent/0 hover:border-accent transition duration-150">
                             View Full Profile
                         </a>
@@ -296,18 +331,30 @@
                 <!-- Cat Card 3: Shadow -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
                     <div class="h-48 bg-primary flex items-center justify-center">
-                        <!-- Placeholder Image URL for Shadow -->
-                        <img src="https://placehold.co/400x300/F0D9E7/E87A9E?text=Shadow"
+                        <!-- IMAGE LINK UPDATED HERE -->
+                        <img src="./images/shadow.jpg"
                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/F0D9E7/E87A9E?text=Shadow';"
                             alt="Shadow the Cat" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-accent mb-2">Shadow</h3>
-                        <p class="text-sm font-semibold text-gray-600 mb-3">1 Year Old | Male | Shy but Sweet</p>
-                        <p class="text-gray-700 line-clamp-3">
+                        <!-- Descriptive text is first -->
+                        <p class="text-gray-700 line-clamp-3 mb-4">
                             A sleek black cat who takes a moment to warm up, but is incredibly affectionate once he trusts you. Needs a patient family who can provide a quiet, secure environment.
                         </p>
-                        <!-- IMPORTANT: This link will need to be updated to shadow.html -->
+
+                        <!-- Footer/Stats Section - Name (Left), Age/Gender (Right) -->
+                        <div class="cat-card-footer flex justify-between items-end">
+                            <!-- Left: Name (Larger) -->
+                            <div class="flex flex-col">
+                                <h3 class="text-2xl font-bold text-accent">Shadow</h3>
+                            </div>
+                            <!-- Right: Age & Gender (Smaller) -->
+                            <p class="text-lg font-semibold text-gray-600 text-right">
+                                1 Year | Young Male
+                            </p>
+                        </div>
+
+                        <!-- Remember to update the href to "shadow.html" when you create that page -->
                         <a href="#" class="mt-4 block text-center py-2 bg-accent/10 text-accent font-semibold rounded-lg border-2 border-accent/0 hover:border-accent transition duration-150">
                             View Full Profile
                         </a>
